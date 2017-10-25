@@ -1,0 +1,37 @@
+.size{
+    font-size: 24px;
+    
+}
+.size2{
+    font-size: 48px;
+    color:white;
+}
+.greenText {
+    color: green !important;
+}
+
+.color{
+    color:white;
+}
+
+.pictureSize{
+    width: 100%;
+    height: auto;
+    float:right;
+}
+
+.containzor{
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+body{
+        background-color: black;
+}
