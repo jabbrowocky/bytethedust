@@ -5,14 +5,17 @@ function runGame() {
     let player1 = {
         teamName: "",
         runs: "",
-        type: ""
+        type: "",
+        atBat: false
     };
 
     let player2 = {
         teamName: "",
         runs: "",
-        type: ""
+        type: "",
+        atBat: false
     };
+    
     let inning = {
         number: 1,
         half: "top"
@@ -25,31 +28,54 @@ function runGame() {
     homeTeam(player1, player2);
     console.log(player1);
     console.log(player2);
-    
-    
+    let numberOfInnings = 2;
     let outs = 0;
-        if (outs === 3){
+
+    
+    for (let i = 1; i <= numberOfInnings * 2; i++) {
+    
+        
+        if (outs === 3 && inning.half === "top"){
             inning.half = "bottom";
             outs = 0;
-            alert ("Bottom of the " + inning.number);
+            atBat(player1, player2, inning);
+            alert("Bottom of the " + inning.number);
+            
         }else if (outs === 3 && inning.half === "bottom" ){
             inning.half = "top";
             outs = 0;
-            inning.number+=1
+            atBat(player1, player2, inning);
+            inning.number+=1;
             alert ("Top of the " + inning.number);
+            
      
         }else if (inning.number === 1 && inning.half === "top"){
+            atBat(player1, player2, inning);
             alert ("Let's Start the Game");
-        }
+        
+        }       
        
-        console.log(inning);
-    let playerAtBat = ""        
-    let baseRunnerFirst = 0;
-    let baseRunerSecond = 0;
-    let baseRunnerThird = 0;
+        let numberOfBases = 0;
+        let onFirst = false;
+        let onSecond = false;
+        let onThird = false;
+        
+        while (outs < 3){  
+            if (player1.atBat === true){
+                numberOfBases = atBatSimulator(player1);
+            }else if (player2.atbat === true){
+                numberOfBases = atBatSimulator(player2);
+            }
+        }   
+
+    }    
+       
+     // end of game stuff   
+        
+      //base runners    
     
     
-    
+      
 }
 
 //game parameters
@@ -58,73 +84,120 @@ function rollDice(numberOfSides){//<----general dice roll command
     return diceRoll
 }
 
-// function atBatSimulator(){
-    // //track batter count *Balls/strikes*
-    // let pitchCount = [];
-    // let balls = pitchCount[0];
-    // let strikes = pitchCount[1];
-   
-    // alert("beginning at bat");
-    // while(pitchCount[0] < 4 || pitchCount[1] < 3 || ){   
-        // switch(rollDice(10)){
-            // case  1:
-                // pitchCount[0]+=1;
-                // break;
-            // case 2:
-                // pitchCount[1]+=1;
-                // break;
-            // case 3:
-                // pitchCount[0]+=1;
-                // break;
-            // case 4:
-                // pitchCount[0]+=1;
-                // break;
-            // case 5:
-                // pitchCount[1]+=1;
-                // break;
-            // case 6:
-                
-            // case 7:
-            // case 8:
-            // case 9:
-            // case 10:
-            // }
-        // if (pitchCount[0] === 4){
-            // let baseRunnerFirst = 1;
-            // return baseRunnerFirst;
-        // }else if (pitchCount[1] === 3){
-            // let outs += 1;
-            // return outs;
-        // }
-    // }
-// }
+function atBatSimulator(player){
+    //track batter count *Balls/strikes*
+    
+    let pitchCount = [0,0];
+    let balls = pitchCount[0];
+    let strikes = pitchCount[1];
+    
+    alert("Beginning at bat");
+    while(pitchCount[0] < 4 || pitchCount[1] < 3){   
+        switch(rollDice(20)){
+            case  1:
+                pitchCount[0]+=1;
+                break;
+            case 2:
+                pitchCount[1]+=1;
+                break;
+            case 3:
+                pitchCount[0]+=1;
+                break;
+            case 4:
+                return hitSimulator(player); // which player
+                break;
+            case 5:
+                pitchCount[1]+=1;
+                break;
+            case 6:
+                return hitSimulator(player); // which player
+                break;
+            case 7:
+                pitchCount[1]+=1;
+                break;
+            case 8:               
+                return hitSimulator(player); //which player
+                break; 
+            case 9:
+                pitchCount[0]+=1;
+                break;
+            case 10: 
+                pitchCount[1]+=1;
+                break;
+            case  11:
+                pitchCount[0]+=1;
+                break;
+            case 12:
+                pitchCount[1]+=1;
+                break;
+            case 13:
+                pitchCount[0]+=1;
+                break;
+            case 14:
+                return hitSimulator(player); // which player
+                break;
+            case 15:
+                pitchCount[1]+=1;
+                break;
+            case 16:
+                return hitSimulator(player); // which player
+                break;
+            case 17:
+                pitchCount[1]+=1;
+                break;
+            case 18:               
+                return hitSimulator(player); //which player
+                break; 
+            case 19:
+                pitchCount[0]+=1;
+                break;
+            case 20: 
+                pitchCount[1]+=1;
+                break;
+        }
+        
+        
+    }
+    if (pitchCount[0] === 4){
+        return 1;
+    }else{
+        return 0;
+    }
+}
 // function scoreTracker(){
     // //populates player1/player2 runs property
 // }
-// function hitSimulator(){
-    // let singleHit = baseRunnerFirst;
-    // let doubleHit = baseRunnerSecond;
-    // let tripleHit = baseRunnerThird;
-    // let homeRun = playerAtBat.runs++
+function hitSimulator(player){
+   
+    
+        switch (rollDice(4)){
+            case 1:
+                return 1
+                break;
+            case 2:
+                return 2;
+                break;
+            case 3:
+                return 3;
+                break;
+            case 4:
+                return 4;
+                break;
+        } 
         
-        // switch (contact){
-            // case 1:
-                // singleHit;
-                // break;
-            // case 2:
-                // doubleHit;
-                // break;
-            // case 3
-                // tripleHit;
-                // break;
-            // case 4
-                // homeRun;
-        // } 
-    // return  contact;  
-// }
-// function atBat (player1, player 2){
-    // switch (player.type === "Home")
-// }
+}
+function atBat (player1, player2, inning){
+    
+    if ((player1.type === "Away Team" && inning.half === "top") || (player1.type === "Home Team" && inning.half === "bottom")){
+        player1.atBat = true;
+        player2.atBat = false;
+        
+    }else{
+        player1.atBat = false;
+        player2.atBat = true;
+        
+    }
+}
 
 
 // //team properties
