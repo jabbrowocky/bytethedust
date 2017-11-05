@@ -37,6 +37,7 @@ function runGame() {
     
     getWeather()
     getAttendance()
+    fanEvent()
     console.log(player1);
     console.log(player2);
     
@@ -121,12 +122,15 @@ function atBatSimulator(player, inning){
         switch(rollDice(20)){
             case  1:
                 pitchCount[0]+=1;
+                alert ("ball!");
                 break;
             case 2:
                 pitchCount[1]+=1;
+                alert ("he missed that one! stee rike!");
                 break;
             case 3:
                 pitchCount[0]+=1;
+                alert ("and that's a ball.");
                 break;
             case 4:
                 gotHit = true;
@@ -135,6 +139,7 @@ function atBatSimulator(player, inning){
                 break;
             case 5:
                 pitchCount[1]+=1;
+                alert ("strike!");
                 break;
             case 6:
                 gotHit = true;
@@ -142,6 +147,7 @@ function atBatSimulator(player, inning){
                 break;
             case 7:
                 pitchCount[1]+=1;
+                alert ("stee riiiike!");
                 break;
             case 8:               
                 gotHit = true;
@@ -149,24 +155,31 @@ function atBatSimulator(player, inning){
                 break; 
             case 9:
                 pitchCount[0]+=1;
+                alert ("ball");
                 break;
             case 10: 
                 pitchCount[1]+=1;
+                alert ("That one's in there for a strike");
                 break;
             case  11:
                 pitchCount[0]+=1;
+                alert ("Brushed him off the plate with that one; ball.");
                 break;
             case 12:
                 pitchCount[1]+=1;
+                alert ("That's a strike");
                 break;
             case 13:
                 pitchCount[0]+=1;
+                alert ("The pitcher missed that one, badly.")
                 break;
             case 14:
                 pitchCount[1]+=1
+                alert ("strike!")
                 break;
             case 15:
                 pitchCount[1]+=1;
+                alert ("Stuh ruh ike!")
                 break;
             case 16:
                 gotHit = true;
@@ -174,12 +187,15 @@ function atBatSimulator(player, inning){
                 break;
             case 17:
                 pitchCount[1]+=1;
+                alert ("strike.")
                 break;
             case 18:               
                 pitchCount[0]+=1;
+                alert ("ball")
                 break; 
             case 19:
                 pitchCount[0]+=1;
+                alert ("BAWL!")
                 break;
             case 20: 
                 gotHit = true;
@@ -397,4 +413,45 @@ function getAttendance(){
             break;
     
     }
-}
+}    
+    function fanEvent(){
+    switch (rollDice(12)){
+        case 1:
+            alert ("Fan in seat 7A wins a new puppy!");
+            break;
+        case 2:
+            alert ("Awwww, John just proposed on the jumbotron;");
+            break;
+        case 3:
+            alert ("Time for a kiss! seats 20f and 21f are now being featured on the kisscam");
+            break;
+        case 4:
+            alert ("On the way to the dugout the first baseman threw little Timmy a ball.");
+            break;
+        case 5:
+            alert ("Today is poster day! the first 92,500 fans will receive a poster of their favorite local right fielder!");
+            break;
+        case 6:
+            alert ("Today 1 lucky fan will walk away with a brand new 1975 Ford Pinto, still in the wrapper.");
+            break;
+        case 7:
+             alert ("Today is free t-shirt day! every fan in the door pre 100,000 gets a t-shirt with the home team logo!");
+            break;
+        case 8:
+             alert ("It's mini bat giveaway day! the first 75,000 fans receive an autopen autographed mini wooden baseball bat.");
+            break;
+        case 9:
+             alert ("The lucky fan in seat 46zz has won a cruise off the coast of Alaska.");
+            break;
+        case 10:
+             alert ("Today is baseball card giveaway, every entrant, 12 or younger, today will receive a complemetary pack of baseball cards.");
+            break;
+        case 11:
+             alert ("It's everyone's favorite day, mini-bobblehead giveaway!");
+            break;
+        case 12:
+             alert ("The lucky fan in seat 37ab has won a the opportunity to meet the members of the team after the game tonight.");
+            break;
+    
+        }
+    }   
